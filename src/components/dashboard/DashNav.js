@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const Navbar = () => {
+const DashNav = () => {
     const [navbar, setNavbar] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
@@ -97,7 +97,13 @@ const Navbar = () => {
                             <span className="text-primary">Lap</span>
                             <span className="text-gray-700">Store</span>
                         </NavLink>
-                        <div className="md:hidden">
+                        <div className="flex items-center gap-5 md:hidden">
+                            <label
+                                htmlFor="dashboard-drawer"
+                                className="capitalize btn btn-primary drawer-button lg:hidden"
+                            >
+                                Actions
+                            </label>
                             <button
                                 className="p-2rounded-md "
                                 onClick={() => setNavbar(!navbar)}
@@ -125,4 +131,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default DashNav;

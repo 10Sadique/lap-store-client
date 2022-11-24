@@ -8,5 +8,22 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [require('daisyui')],
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+                    primary: '#e33c5a',
+                    secondary: '#b69ca0',
+                    accent: '#d64d6f',
+                    neutral: '#000',
+                    'base-100': '#FFFFFF',
+                    info: '#3ABFF8',
+                    success: '#36D399',
+                    warning: '#FBBD23',
+                    error: '#F87272',
+                },
+            },
+        ],
+    },
 };

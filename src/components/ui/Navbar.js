@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
 
     const handleSignOut = () => {
-        // logOut()
-        //     .then(() => {
-        //         console.log('Signed Out');
-        //     })
-        //     .catch((err) => {
-        //         console.error(err);
-        //     });
+        logOut()
+            .then(() => {
+                console.log('Signed Out');
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     };
 
     const navLinks = [
@@ -32,18 +34,55 @@ const Navbar = () => {
             >
                 Blog
             </NavLink>
-            <NavLink
-                className={({ isActive }) => (isActive ? 'text-primary' : '')}
-                to={`/signin`}
-            >
-                Sing In
-            </NavLink>
-            <NavLink
-                className={({ isActive }) => (isActive ? 'text-primary' : '')}
-                to={`/signup`}
-            >
-                Sign Up
-            </NavLink>
+            {user?.uid ? (
+                <>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'text-primary' : ''
+                        }
+                        to={`/dashboard`}
+                    >
+                        Dashboard
+                    </NavLink>
+                    {/* <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'text-primary' : ''
+                        }
+                        to={`/signup`}
+                    >
+                        Sign Up
+                    </NavLink> */}
+                    <button onClick={handleSignOut}>Sign Out</button>
+                    {user?.photoURL && (
+                        <span className="w-10 h-10 overflow-hidden rounded-full">
+                            <img
+                                className="object-cover w-full h-full"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                        </span>
+                    )}
+                </>
+            ) : (
+                <>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'text-primary' : ''
+                        }
+                        to={`/signin`}
+                    >
+                        Sing In
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'text-primary' : ''
+                        }
+                        to={`/signup`}
+                    >
+                        Sign Up
+                    </NavLink>
+                </>
+            )}
         </div>,
     ];
 

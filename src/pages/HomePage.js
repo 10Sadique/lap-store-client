@@ -7,11 +7,9 @@ const HomePage = () => {
         queryFn: async () => {
             const res = await axios('http://localhost:5000/categories');
 
-            return res;
+            return res.data;
         },
     });
-
-    console.log(categories);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -21,6 +19,11 @@ const HomePage = () => {
         <div>
             <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
                 Home
+                <div>
+                    {categories.map((category) => (
+                        <p key={category._id}>{category.name}</p>
+                    ))}
+                </div>
             </div>
         </div>
     );

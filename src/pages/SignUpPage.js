@@ -20,7 +20,7 @@ const SignUpPage = () => {
         useContext(AuthContext);
 
     // handle sign in button
-    const handleSignIn = (data) => {
+    const handleSignUp = (data) => {
         const url = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
         const image = data.image[0];
         const formData = new FormData();
@@ -86,7 +86,7 @@ const SignUpPage = () => {
                     <h1 className="text-xl font-bold text-primary">Sign Up</h1>
                     <form
                         className="w-full"
-                        onSubmit={handleSubmit(handleSignIn)}
+                        onSubmit={handleSubmit(handleSignUp)}
                     >
                         {/* name input field */}
                         <div className="w-full form-control">
@@ -105,11 +105,6 @@ const SignUpPage = () => {
                             {errors.name && (
                                 <p className="mt-2 text-error" role="alert">
                                     {errors.name?.message}
-                                </p>
-                            )}
-                            {error && (
-                                <p className="mt-2 text-error" role="alert">
-                                    {error}
                                 </p>
                             )}
                         </div>
@@ -137,11 +132,6 @@ const SignUpPage = () => {
                                         {errors.role?.message}
                                     </p>
                                 )}
-                                {error && (
-                                    <p className="mt-2 text-error" role="alert">
-                                        {error}
-                                    </p>
-                                )}
                             </div>
 
                             {/* image input */}
@@ -161,11 +151,6 @@ const SignUpPage = () => {
                                 {errors.image && (
                                     <p className="mt-2 text-error" role="alert">
                                         {errors.image?.message}
-                                    </p>
-                                )}
-                                {error && (
-                                    <p className="mt-2 text-error" role="alert">
-                                        {error}
                                     </p>
                                 )}
                             </div>
@@ -190,11 +175,6 @@ const SignUpPage = () => {
                                     {errors.email?.message}
                                 </p>
                             )}
-                            {error && (
-                                <p className="mt-2 text-error" role="alert">
-                                    {error}
-                                </p>
-                            )}
                         </div>
 
                         {/* password input field */}
@@ -216,12 +196,13 @@ const SignUpPage = () => {
                                     {errors.password?.message}
                                 </p>
                             )}
-                            {error && (
-                                <p className="mt-2 text-error" role="alert">
-                                    {error}
-                                </p>
-                            )}
                         </div>
+
+                        {error && (
+                            <p className="mt-2 text-error" role="alert">
+                                {error.slice(9, -1)}
+                            </p>
+                        )}
 
                         {/* sign up button */}
                         <button

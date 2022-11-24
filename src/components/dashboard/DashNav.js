@@ -100,9 +100,9 @@ const DashNav = () => {
                         <div className="flex items-center gap-5 md:hidden">
                             <label
                                 htmlFor="dashboard-drawer"
-                                className="capitalize btn btn-primary drawer-button lg:hidden"
+                                className="capitalize btn btn-sm btn-primary drawer-button lg:hidden"
                             >
-                                Actions
+                                Menu
                             </label>
                             <button
                                 className="p-2rounded-md "

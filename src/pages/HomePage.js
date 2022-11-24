@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Loader from '../components/ui/Loader';
 
 const HomePage = () => {
     const { data: categories, isLoading } = useQuery({
@@ -12,7 +13,7 @@ const HomePage = () => {
     });
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
 
     return (

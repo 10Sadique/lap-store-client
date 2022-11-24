@@ -139,9 +139,11 @@ const SignUpPage = () => {
 
                         <div className="flex flex-col items-center gap-5 lg:flex-row">
                             {/* role select */}
-                            <div className="w-full max-w-xs form-control">
+                            <div className="w-full form-control">
                                 <label className="label">
-                                    <span className="label-text">You are</span>
+                                    <span className="font-semibold label-text">
+                                        You are
+                                    </span>
                                 </label>
                                 <select
                                     className="select select-bordered"

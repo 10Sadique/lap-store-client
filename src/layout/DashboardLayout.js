@@ -1,12 +1,14 @@
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { Link, Outlet, ScrollRestoration } from 'react-router-dom';
 import DashNav from '../components/dashboard/DashNav';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { AuthContext } from '../contexts/AuthProvider';
 import { useContext } from 'react';
-import useAdmin from '../components/hooks/useAdmin';
-import useSeller from '../components/hooks/useSeller';
-import useUser from '../components/hooks/useUser';
+import useAdmin from '../hooks/useAdmin';
+import useSeller from '../hooks/useSeller';
+import useUser from '../hooks/useUser';
+import Loader from '../components/ui/Loader';
+import { Toaster } from 'react-hot-toast';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
@@ -22,11 +24,8 @@ const DashboardLayout = () => {
         },
     });
 
-    console.log(isUser);
-
-    console.log(users);
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
 
     return (
@@ -39,7 +38,7 @@ const DashboardLayout = () => {
                     className="drawer-toggle"
                 />
                 {/* Main Content */}
-                <div className="drawer-content">
+                <div className="drawer-content no-scrollbar">
                     <Outlet />
                     <ScrollRestoration />
                 </div>
@@ -64,13 +63,19 @@ const DashboardLayout = () => {
                         {isSeller && (
                             <>
                                 <li>
-                                    <a>My Products</a>
+                                    <Link to={`/dashboard/products`}>
+                                        My Products
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a>Add Products</a>
+                                    <Link to={`/dashboard/add-product`}>
+                                        Add Products
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a>My Buyers</a>
+                                    <Link to={`/dashboard/my-buyers`}>
+                                        My Buyers
+                                    </Link>
                                 </li>
                             </>
                         )}
@@ -87,6 +92,7 @@ const DashboardLayout = () => {
                     </ul>
                 </div>
             </div>
+            <Toaster position="top-center" reverseOrder={false} />
         </div>
     );
 };

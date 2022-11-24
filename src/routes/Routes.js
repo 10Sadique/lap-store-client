@@ -1,7 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
+import AddProduct from '../components/dashboard/seller/AddProduct';
+import MyBuyers from '../components/dashboard/seller/MyBuyers';
 import DashboardLayout from '../layout/DashboardLayout';
 import MainLayout from '../layout/MainLayout';
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/dashboard/Dashboard';
+import SellerPage from '../pages/dashboard/SellerPage';
 import HomePage from '../pages/HomePage';
 import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
@@ -30,6 +33,30 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Dashboard />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/dashboard/products',
+                element: (
+                    <PrivateRoute>
+                        <SellerPage />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/dashboard/add-product',
+                element: (
+                    <PrivateRoute>
+                        <AddProduct />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/dashboard/my-buyers',
+                element: (
+                    <PrivateRoute>
+                        <MyBuyers />
                     </PrivateRoute>
                 ),
             },

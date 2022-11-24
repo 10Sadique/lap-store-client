@@ -8,6 +8,7 @@ import login from '../assets/login.svg';
 const SignUpPage = () => {
     const imgHostingKey = process.env.REACT_APP_imgbb_apiKey;
     const [error, setError] = useState('');
+    const [createdUserEmail, setcreatedUserEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const to = location.state?.from?.pathname || '/';
@@ -45,6 +46,12 @@ const SignUpPage = () => {
                                 .then(() => {
                                     console.log('Profile Updated');
                                     console.log(user);
+                                    saveUser(
+                                        data.name,
+                                        data.email,
+                                        data.role,
+                                        false
+                                    );
                                 })
                                 .catch((err) => {
                                     setError(err.message);
@@ -68,11 +75,32 @@ const SignUpPage = () => {
                 const user = result.user;
                 setError('');
                 console.log(user);
+                saveUser(user.displayName, user.email, 'user', false);
                 navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
                 console.log(err.message);
+            });
+    };
+
+    // save user function
+    const saveUser = (name, email, role = 'user', isVerified = false) => {
+        const user = { name, email, role, isVerified };
+
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // console.log(data);
+                if (data.acknowledged) {
+                    setcreatedUserEmail(email);
+                }
             });
     };
 

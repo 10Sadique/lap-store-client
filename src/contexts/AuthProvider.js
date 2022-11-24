@@ -32,9 +32,12 @@ const AuthProvider = ({ children }) => {
     };
 
     // update user name
-    const updateUser = (name) => {
+    const updateUser = (name, image) => {
         setLoading(true);
-        return updateProfile(auth.currentUser, { displayName: name });
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: image,
+        });
     };
 
     // google sign in

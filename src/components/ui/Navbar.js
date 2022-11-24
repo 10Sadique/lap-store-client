@@ -21,25 +21,25 @@ const Navbar = () => {
             key={1}
         >
             <NavLink
-                className={({ isActive }) => (isActive ? 'text-cyan-600' : '')}
+                className={({ isActive }) => (isActive ? 'text-primary' : '')}
                 to={`/shop`}
             >
                 Shop
             </NavLink>
             <NavLink
-                className={({ isActive }) => (isActive ? 'text-cyan-600' : '')}
+                className={({ isActive }) => (isActive ? 'text-primary' : '')}
                 to={`/blog`}
             >
-                Events
+                Blog
             </NavLink>
             <NavLink
-                className={({ isActive }) => (isActive ? 'text-cyan-600' : '')}
+                className={({ isActive }) => (isActive ? 'text-primary' : '')}
                 to={`/signin`}
             >
                 Sing In
             </NavLink>
             <NavLink
-                className={({ isActive }) => (isActive ? 'text-cyan-600' : '')}
+                className={({ isActive }) => (isActive ? 'text-primary' : '')}
                 to={`/signup`}
             >
                 Sign Up

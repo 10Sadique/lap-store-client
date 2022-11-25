@@ -17,7 +17,9 @@ const MyProducts = () => {
     } = useQuery({
         queryKey: ['products', email],
         queryFn: async () => {
-            const res = await axios(`http://localhost:5000/products/${email}`);
+            const res = await axios(
+                `http://localhost:5000/products?email=${email}`
+            );
 
             return res.data;
         },

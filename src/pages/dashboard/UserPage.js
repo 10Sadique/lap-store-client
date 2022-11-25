@@ -1,5 +1,11 @@
+import MyWishlist from '../../components/dashboard/user/MyWishlist';
+
 const UserPage = () => {
-    return <div>UserPage</div>;
+    return (
+        <div>
+            <MyWishlist />
+        </div>
+    );
 };
 
 export default UserPage;

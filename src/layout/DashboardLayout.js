@@ -31,7 +31,7 @@ const DashboardLayout = () => {
     return (
         <div>
             <DashNav />
-            <div className="drawer drawer-mobile">
+            <div className="drawer drawer-mobile h-[calc(100vh-56px)] ">
                 <input
                     id="dashboard-drawer"
                     type="checkbox"
@@ -63,9 +63,7 @@ const DashboardLayout = () => {
                         {isSeller && (
                             <>
                                 <li>
-                                    <Link to={`/dashboard/products`}>
-                                        My Products
-                                    </Link>
+                                    <Link to={`/dashboard`}>My Products</Link>
                                 </li>
                                 <li>
                                     <Link to={`/dashboard/add-product`}>
@@ -82,10 +80,12 @@ const DashboardLayout = () => {
                         {isUser && (
                             <>
                                 <li>
-                                    <a>My Wishlist</a>
+                                    <Link to={`/dashboard`}>My Wishlist</Link>
                                 </li>
                                 <li>
-                                    <a>Add Order</a>
+                                    <Link to={`/dashboard/orders`}>
+                                        My Orders
+                                    </Link>
                                 </li>
                             </>
                         )}

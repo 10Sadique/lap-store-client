@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import AddProduct from '../components/dashboard/seller/AddProduct';
 import MyBuyers from '../components/dashboard/seller/MyBuyers';
+import ProuductByCategory from '../components/home/ProuductByCategory';
 import DashboardLayout from '../layout/DashboardLayout';
 import MainLayout from '../layout/MainLayout';
 import Dashboard from '../pages/dashboard/Dashboard';
@@ -9,6 +10,10 @@ import HomePage from '../pages/HomePage';
 import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
 import PrivateRoute from './PrivateRoute';
+import Shop from '../components/home/Shop';
+import MyWishlist from '../components/dashboard/user/MyWishlist';
+import MyOrders from '../components/dashboard/user/MyOrders';
+import Payment from '../components/payment/Payment';
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +23,31 @@ export const router = createBrowserRouter([
             { path: '/', element: <HomePage /> },
             { path: '/signup', element: <SignUpPage /> },
             { path: '/signin', element: <SignInPage /> },
+            {
+                path: '/category/:id',
+                element: (
+                    <PrivateRoute>
+                        <ProuductByCategory />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/shop',
+                element: (
+                    <PrivateRoute>
+                        <Shop />
+                    </PrivateRoute>
+                ),
+            },
+            // payment route
+            {
+                path: '/payment',
+                element: (
+                    <PrivateRoute>
+                        <Payment />
+                    </PrivateRoute>
+                ),
+            },
         ],
     },
     {
@@ -36,8 +66,9 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
             },
+            // serller routes
             {
-                path: '/dashboard/products',
+                path: '/dashboard',
                 element: (
                     <PrivateRoute>
                         <SellerPage />
@@ -57,6 +88,23 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <MyBuyers />
+                    </PrivateRoute>
+                ),
+            },
+            // user routes
+            {
+                path: '/dashboard',
+                element: (
+                    <PrivateRoute>
+                        <MyWishlist />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/dashboard/orders',
+                element: (
+                    <PrivateRoute>
+                        <MyOrders />
                     </PrivateRoute>
                 ),
             },

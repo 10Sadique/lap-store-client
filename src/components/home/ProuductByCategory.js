@@ -1,0 +1,42 @@
+import { useLocation } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import Loader from '../ui/Loader';
+import ProductCard from './ProductCard';
+
+const ProuductByCategory = () => {
+    const location = useLocation();
+    const category = location.pathname.split('/').at(-1);
+
+    const { data: products, isLoading } = useQuery({
+        queryKey: ['products', category],
+        queryFn: async () => {
+            const res = await axios(
+                `http://localhost:5000/products/${category}`
+            );
+
+            return res.data;
+        },
+    });
+
+    if (isLoading) {
+        return <Loader />;
+    }
+
+    console.log(products);
+
+    return (
+        <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
+            <h1 className="mb-5 text-2xl capitalize">
+                Showing Laptops from {category} Category
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {products.map((product) => (
+                    <ProductCard key={product._id} product={product} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default ProuductByCategory;

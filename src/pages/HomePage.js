@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Loader from '../components/ui/Loader';
 
 const HomePage = () => {
@@ -22,7 +23,13 @@ const HomePage = () => {
                 Home
                 <div>
                     {categories.map((category) => (
-                        <p key={category._id}>{category.name}</p>
+                        <Link
+                            className="capitalize"
+                            to={`/category/${category.name}`}
+                            key={category._id}
+                        >
+                            {category.name}
+                        </Link>
                     ))}
                 </div>
             </div>

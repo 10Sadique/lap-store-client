@@ -49,7 +49,7 @@ const AddProduct = () => {
                         desc: data.desc,
                         image: imgData.data.url,
                         location: data.location,
-                        originaPrice: data.originaPrice,
+                        originalPrice: data.originaPrice,
                         phone: data.phone,
                         price: data.price,
                         purchaseYear: data.purchaseYear,
@@ -71,7 +71,7 @@ const AddProduct = () => {
                             if (data.acknowledged) {
                                 setLoading(false);
                                 toast.success('Product Added Successfully!');
-                                navigate('/dashboard/products');
+                                navigate('/dashboard');
                             }
                         });
                 }

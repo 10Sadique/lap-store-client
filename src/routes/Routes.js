@@ -39,15 +39,6 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
             },
-            // payment route
-            {
-                path: '/payment',
-                element: (
-                    <PrivateRoute>
-                        <Payment />
-                    </PrivateRoute>
-                ),
-            },
         ],
     },
     {
@@ -105,6 +96,15 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <MyOrders />
+                    </PrivateRoute>
+                ),
+            },
+            // payment route
+            {
+                path: '/dashboard/payment/:id',
+                element: (
+                    <PrivateRoute>
+                        <Payment />
                     </PrivateRoute>
                 ),
             },

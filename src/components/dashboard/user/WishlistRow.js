@@ -18,7 +18,7 @@ const WishlistRow = ({ productId, idx }) => {
     });
 
     const handleAddToMyOrders = () => {
-        const product = {
+        const order = {
             productId,
             userEmail: user.email,
         };
@@ -28,7 +28,7 @@ const WishlistRow = ({ productId, idx }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(product),
+            body: JSON.stringify(order),
         })
             .then((res) => res.json())
             .then((data) => {

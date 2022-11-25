@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './../../../contexts/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
-import { async } from '@firebase/util';
 import axios from 'axios';
 import Loader from '../../ui/Loader';
 import OrderRow from './OrderRow';
@@ -31,7 +30,6 @@ const MyOrders = () => {
             </h1>
             {products.length ? (
                 <div className="overflow-hidden shadow-md rounded-xl">
-                    (
                     <table className="w-full table-fixed lg:table-auto">
                         <thead className="bg-secondary/20">
                             <tr className="overflow-x-scroll">
@@ -52,7 +50,6 @@ const MyOrders = () => {
                             ))}
                         </tbody>
                     </table>
-                    )
                 </div>
             ) : (
                 <p className="text-center">No order placed yet.</p>

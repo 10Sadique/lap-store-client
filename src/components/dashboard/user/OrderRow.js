@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from './../../../contexts/AuthProvider';
 
 const OrderRow = ({ productId, idx }) => {
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
     const { data: product, isLoading } = useQuery({
         queryKey: ['product', productId],
         queryFn: async () => {
@@ -37,9 +36,9 @@ const OrderRow = ({ productId, idx }) => {
             </td>
             <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
                 <Link
-                    to={`/payment`}
+                    to={`/dashboard/payment/${productId}`}
                     // onClick={handleAddToMyOrders}
-                    // disabled={product.isSold}
+                    disabled={product.isSold}
                     className="text-xs normal-case btn btn-sm btn-primary"
                 >
                     Pay

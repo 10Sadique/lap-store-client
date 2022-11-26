@@ -136,7 +136,7 @@ const MyProducts = () => {
             {deletingProduct && (
                 <ConfirmationModal
                     title={`Are you sure you want to remove product?`}
-                    message={`If you remove ${deletingProduct.name}, it cannot be undome!!`}
+                    message={`If you remove ${deletingProduct.name}, it cannot be undone!!`}
                     product={deletingProduct}
                     handleDelete={handleDelete}
                     closeModal={closeModal}

@@ -34,6 +34,13 @@ const OrderRow = ({ productId, idx }) => {
             <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
                 {product.category}
             </td>
+            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
+                {product.isSold ? (
+                    <span className="font-bold text-error">Sold</span>
+                ) : (
+                    <span className="font-bold text-success">Available</span>
+                )}
+            </td>
             <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
                 <Link
                     to={`/dashboard/payment/${productId}`}

@@ -121,6 +121,12 @@ const ProductCard = ({ product }) => {
                     </p>
                 </div>
 
+                {/* Product Desc. */}
+                <div className="mb-3 h-12 overflow-hidden text-ellipsis">
+                    <span className="font-semibold">Product Description: </span>
+                    <span>{product.desc}</span>
+                </div>
+
                 {/* buttons */}
                 <div className="grid grid-cols-2 gap-4">
                     <label

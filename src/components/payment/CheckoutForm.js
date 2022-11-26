@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import Loader from '../ui/Loader';
 import { AuthContext } from './../../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const CheckoutForm = ({ product }) => {
     const { user } = useContext(AuthContext);
@@ -105,6 +106,7 @@ const CheckoutForm = ({ product }) => {
                     if (data.insertedId) {
                         setSuccess('Payment Successful');
                         setTransactionId(paymentIntent.id);
+                        toast.success('Payment Successful!!');
                     }
                 });
         }

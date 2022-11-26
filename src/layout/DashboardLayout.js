@@ -15,18 +15,20 @@ const DashboardLayout = () => {
     const [isAdmin] = useAdmin(user.email);
     const [isSeller] = useSeller(user.email);
     const [isUser] = useUser(user.email);
-    const { data: users, isLoading } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const res = await axios('http://localhost:5000/users');
+    // const { data: users, isLoading } = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: async () => {
+    //         const res = await axios('http://localhost:5000/users');
 
-            return res.data;
-        },
-    });
+    //         return res.data;
+    //     },
+    // });
 
-    if (isLoading) {
-        return <Loader />;
-    }
+    // if (isLoading) {
+    //     return <Loader />;
+    // }
+
+    // console.log(users);
 
     return (
         <div>
@@ -53,10 +55,12 @@ const DashboardLayout = () => {
                         {isAdmin && (
                             <>
                                 <li>
-                                    <a>All Users</a>
+                                    <Link to={`/dashboard`}>All Users</Link>
                                 </li>
                                 <li>
-                                    <a>All Sellers</a>
+                                    <Link to={`/dashboard/sellers`}>
+                                        All Sellers
+                                    </Link>
                                 </li>
                             </>
                         )}

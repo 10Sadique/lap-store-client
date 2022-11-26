@@ -4,10 +4,12 @@ import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import login from '../assets/login.svg';
+import Loader from '../components/ui/Loader';
 
 const SignUpPage = () => {
     const imgHostingKey = process.env.REACT_APP_imgbb_apiKey;
     const [error, setError] = useState('');
+    const [pageLoading, setPageLoading] = useState(false);
     const [createdUserEmail, setcreatedUserEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -22,6 +24,7 @@ const SignUpPage = () => {
 
     // handle sign in button
     const handleSignUp = (data) => {
+        setPageLoading(true);
         const url = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
         const image = data.image[0];
         const formData = new FormData();
@@ -52,10 +55,12 @@ const SignUpPage = () => {
                                         data.role,
                                         false
                                     );
+                                    setPageLoading(false);
                                 })
                                 .catch((err) => {
                                     setError(err.message);
                                     console.log(err.message);
+                                    setPageLoading(false);
                                 });
 
                             navigate(to, { replace: true });
@@ -103,6 +108,14 @@ const SignUpPage = () => {
                 }
             });
     };
+
+    if (pageLoading) {
+        return (
+            <div className="flex items-center justify-center h-[70vh]">
+                <Loader />
+            </div>
+        );
+    }
 
     return (
         <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">

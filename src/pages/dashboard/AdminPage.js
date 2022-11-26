@@ -1,5 +1,11 @@
+import AllUsers from './../../components/dashboard/admin/AllUsers';
+
 const AdminPage = () => {
-    return <div>AdminPage</div>;
+    return (
+        <>
+            <AllUsers />
+        </>
+    );
 };
 
 export default AdminPage;

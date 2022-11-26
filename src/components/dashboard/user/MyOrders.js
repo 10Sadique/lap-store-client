@@ -37,6 +37,7 @@ const MyOrders = () => {
                                 <th className="py-2 lg:px-5">Name</th>
                                 <th className="py-2 lg:px-5">Price</th>
                                 <th className="py-2 lg:px-5">Category</th>
+                                <th className="py-2 lg:px-5">Status</th>
                                 <th className="py-2 lg:px-5">Actions</th>
                             </tr>
                         </thead>

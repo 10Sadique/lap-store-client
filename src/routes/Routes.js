@@ -14,6 +14,8 @@ import Shop from '../components/home/Shop';
 import MyWishlist from '../components/dashboard/user/MyWishlist';
 import MyOrders from '../components/dashboard/user/MyOrders';
 import Payment from '../components/payment/Payment';
+import AllUsers from '../components/dashboard/admin/AllUsers';
+import AllSellers from '../components/dashboard/admin/AllSellers';
 
 export const router = createBrowserRouter([
     {
@@ -105,6 +107,23 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Payment />
+                    </PrivateRoute>
+                ),
+            },
+            // Admin routes,
+            {
+                path: '/dashboard',
+                element: (
+                    <PrivateRoute>
+                        <AllUsers />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/dashboard/sellers',
+                element: (
+                    <PrivateRoute>
+                        <AllSellers />
                     </PrivateRoute>
                 ),
             },

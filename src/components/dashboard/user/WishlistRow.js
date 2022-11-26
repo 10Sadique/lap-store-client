@@ -60,9 +60,9 @@ const WishlistRow = ({ productId, idx }) => {
             </td>
             <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
                 {product.isSold ? (
-                    <span className="text-primary">Sold</span>
+                    <span className="text-primary font-bold">Sold</span>
                 ) : (
-                    <span className="text-success">Avaiable</span>
+                    <span className="text-success font-bold">Avaiable</span>
                 )}
             </td>
             <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">

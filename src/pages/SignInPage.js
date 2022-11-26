@@ -4,9 +4,12 @@ import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import login from '../assets/login.svg';
+import Loader from './../components/ui/Loader';
 
 const SignInPage = () => {
     const [error, setError] = useState('');
+    const [pageLoading, setPageLoading] = useState(false);
+    const [createdUserEmail, setcreatedUserEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const to = location.state?.from?.pathname || '/';
@@ -19,16 +22,19 @@ const SignInPage = () => {
 
     // handle sign in button
     const handleSignIn = (data) => {
+        setPageLoading(true);
         signIn(data.email, data.password)
             .then((result) => {
                 const user = result.user;
                 setError('');
                 console.log(user);
+                setPageLoading(false);
                 navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
                 console.log(err.message);
+                setPageLoading(false);
             });
     };
 
@@ -39,6 +45,7 @@ const SignInPage = () => {
                 const user = result.user;
                 setError('');
                 console.log(user);
+                saveUser(user.displayName, user.email, 'user', false);
                 navigate(to, { replace: true });
             })
             .catch((err) => {
@@ -46,6 +53,34 @@ const SignInPage = () => {
                 console.log(err.message);
             });
     };
+
+    // save user function
+    const saveUser = (name, email, role = 'user', isVerified = false) => {
+        const user = { name, email, role, isVerified };
+
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // console.log(data);
+                if (data.acknowledged) {
+                    setcreatedUserEmail(email);
+                }
+            });
+    };
+
+    if (pageLoading) {
+        return (
+            <div className="flex items-center justify-center h-[70vh]">
+                <Loader />
+            </div>
+        );
+    }
 
     return (
         <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">

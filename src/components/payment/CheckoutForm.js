@@ -79,6 +79,7 @@ const CheckoutForm = ({ product }) => {
         if (paymentIntent.status === 'succeeded') {
             setSuccess('Payment Successful');
             setTransactionId(paymentIntent.id);
+            console.log(paymentIntent.id);
 
             // store buyer info in db
             const buyer = {
@@ -87,7 +88,7 @@ const CheckoutForm = ({ product }) => {
                 buyerName: user.displayName,
                 productId: _id,
                 productName: name,
-                transactionId,
+                transactionId: paymentIntent.id,
                 sellerEmail,
             };
 

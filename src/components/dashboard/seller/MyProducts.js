@@ -70,65 +70,69 @@ const MyProducts = () => {
             <h1 className="mb-8 text-2xl text-center lg:text-left">
                 My Products
             </h1>
-            <div className="overflow-hidden shadow-md rounded-xl">
-                <table className="w-full table-fixed lg:table-auto">
-                    <thead className="bg-secondary/20">
-                        <tr className="overflow-x-scroll">
-                            <th className="py-2 lg:px-5">Sl.</th>
-                            <th className="py-2 lg:px-5">Name</th>
-                            <th className="py-2 lg:px-5">Price</th>
-                            <th className="py-2 lg:px-5">Status</th>
-                            <th className="py-2 lg:px-5">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y-[1px] bg-secondary/10">
-                        {products.map((product, i) => (
-                            <tr key={product._id}>
-                                <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                                    {i + 1}
-                                </td>
-                                <td className="py-2 lg:py-3 text-sm lg:text-[16px] ">
-                                    {product.name}
-                                </td>
-                                <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                                    {product.price}
-                                </td>
-                                <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                                    {product.isSold ? (
-                                        <span className="text-primary">
-                                            Sold
-                                        </span>
-                                    ) : (
-                                        <span className="text-success">
-                                            Available
-                                        </span>
-                                    )}
-                                </td>
-                                <td className="flex flex-col items-center justify-center gap-2 py-2 lg:py-3 text-sm lg:text-[16px] text-center lg:flex-row">
-                                    <button
-                                        onClick={() =>
-                                            handleAdvertise(product._id)
-                                        }
-                                        disabled={product.isAdvertised}
-                                        className="w-full btn btn-success btn-xs lg:w-auto"
-                                    >
-                                        Advertise
-                                    </button>
-                                    <label
-                                        onClick={() =>
-                                            setDeletingProduct(product)
-                                        }
-                                        htmlFor="confirmation-modal"
-                                        className="w-full btn btn-primary btn-xs lg:w-auto"
-                                    >
-                                        Delete
-                                    </label>
-                                </td>
+            {products.length ? (
+                <div className="overflow-hidden shadow-md rounded-xl">
+                    <table className="w-full table-fixed lg:table-auto">
+                        <thead className="bg-secondary/20">
+                            <tr className="overflow-x-scroll">
+                                <th className="py-2 lg:px-5">Sl.</th>
+                                <th className="py-2 lg:px-5">Name</th>
+                                <th className="py-2 lg:px-5">Price</th>
+                                <th className="py-2 lg:px-5">Status</th>
+                                <th className="py-2 lg:px-5">Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody className="divide-y-[1px] bg-secondary/10">
+                            {products.map((product, i) => (
+                                <tr key={product._id}>
+                                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                                        {i + 1}
+                                    </td>
+                                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] ">
+                                        {product.name}
+                                    </td>
+                                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                                        {product.price}
+                                    </td>
+                                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                                        {product.isSold ? (
+                                            <span className="text-primary">
+                                                Sold
+                                            </span>
+                                        ) : (
+                                            <span className="text-success">
+                                                Available
+                                            </span>
+                                        )}
+                                    </td>
+                                    <td className="flex flex-col items-center justify-center gap-2 py-2 lg:py-3 text-sm lg:text-[16px] text-center lg:flex-row">
+                                        <button
+                                            onClick={() =>
+                                                handleAdvertise(product._id)
+                                            }
+                                            disabled={product.isAdvertised}
+                                            className="w-full btn btn-success btn-xs lg:w-auto"
+                                        >
+                                            Advertise
+                                        </button>
+                                        <label
+                                            onClick={() =>
+                                                setDeletingProduct(product)
+                                            }
+                                            htmlFor="confirmation-modal"
+                                            className="w-full btn btn-primary btn-xs lg:w-auto"
+                                        >
+                                            Delete
+                                        </label>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ) : (
+                <p className="text-center">No products added.</p>
+            )}
             {deletingProduct && (
                 <ConfirmationModal
                     title={`Are you sure you want to remove product?`}

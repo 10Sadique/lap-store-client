@@ -16,6 +16,9 @@ import MyOrders from '../components/dashboard/user/MyOrders';
 import Payment from '../components/payment/Payment';
 import AllUsers from '../components/dashboard/admin/AllUsers';
 import AllSellers from '../components/dashboard/admin/AllSellers';
+import AdminRoute from './AdminRoute';
+import SellerRoute from './SellerRoute';
+import UserRoute from './UserRoute';
 
 export const router = createBrowserRouter([
     {
@@ -63,68 +66,68 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: (
-                    <PrivateRoute>
+                    <SellerRoute>
                         <SellerPage />
-                    </PrivateRoute>
+                    </SellerRoute>
                 ),
             },
             {
                 path: '/dashboard/add-product',
                 element: (
-                    <PrivateRoute>
+                    <SellerRoute>
                         <AddProduct />
-                    </PrivateRoute>
+                    </SellerRoute>
                 ),
             },
             {
                 path: '/dashboard/my-buyers',
                 element: (
-                    <PrivateRoute>
+                    <SellerRoute>
                         <MyBuyers />
-                    </PrivateRoute>
+                    </SellerRoute>
                 ),
             },
             // user routes
             {
                 path: '/dashboard',
                 element: (
-                    <PrivateRoute>
+                    <UserRoute>
                         <MyWishlist />
-                    </PrivateRoute>
+                    </UserRoute>
                 ),
             },
             {
                 path: '/dashboard/orders',
                 element: (
-                    <PrivateRoute>
+                    <UserRoute>
                         <MyOrders />
-                    </PrivateRoute>
+                    </UserRoute>
                 ),
             },
             // payment route
             {
                 path: '/dashboard/payment/:id',
                 element: (
-                    <PrivateRoute>
+                    <UserRoute>
                         <Payment />
-                    </PrivateRoute>
+                    </UserRoute>
                 ),
             },
             // Admin routes,
             {
                 path: '/dashboard',
                 element: (
-                    <PrivateRoute>
+                    <AdminRoute>
                         <AllUsers />
-                    </PrivateRoute>
+                    </AdminRoute>
                 ),
             },
             {
                 path: '/dashboard/sellers',
                 element: (
-                    <PrivateRoute>
+                    <AdminRoute>
                         <AllSellers />
-                    </PrivateRoute>
+                    </AdminRoute>
                 ),
             },
         ],

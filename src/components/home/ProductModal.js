@@ -24,6 +24,7 @@ const ProductModal = ({ product, user, closeModal }) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(order),
         })

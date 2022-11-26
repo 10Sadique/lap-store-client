@@ -24,9 +24,9 @@ const AllSellers = () => {
     const handleDelete = (id) => {
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'DELETE',
-            // headers: {
-            //     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-            // },
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
         })
             .then((res) => res.json())
             .then((data) => {
@@ -47,7 +47,7 @@ const AllSellers = () => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                //     authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
         })
             .then((res) => res.json())
@@ -67,7 +67,7 @@ const AllSellers = () => {
     return (
         <div className="mx-2 my-8 lg:m-8">
             <h1 className="mb-5 text-2xl text-center lg:text-left">
-                All Users
+                All Sellers
             </h1>
             {users.length ? (
                 <div className="overflow-hidden shadow-md rounded-xl">

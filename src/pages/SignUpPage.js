@@ -5,12 +5,13 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import login from '../assets/login.svg';
 import Loader from '../components/ui/Loader';
+import verifyJWT from './../components/utils/verifyJWT';
 
 const SignUpPage = () => {
     const imgHostingKey = process.env.REACT_APP_imgbb_apiKey;
     const [error, setError] = useState('');
     const [pageLoading, setPageLoading] = useState(false);
-    const [createdUserEmail, setcreatedUserEmail] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const to = location.state?.from?.pathname || '/';
@@ -62,12 +63,12 @@ const SignUpPage = () => {
                                     console.log(err.message);
                                     setPageLoading(false);
                                 });
-
                             navigate(to, { replace: true });
                         })
                         .catch((err) => {
                             setError(err.message);
                             console.log(err.message);
+                            setPageLoading(false);
                         });
                 }
             });
@@ -81,11 +82,14 @@ const SignUpPage = () => {
                 setError('');
                 console.log(user);
                 saveUser(user.displayName, user.email, 'user', false);
+                verifyJWT(user.email);
+                setPageLoading(false);
                 navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
                 console.log(err.message);
+                setPageLoading(false);
             });
     };
 
@@ -97,6 +101,7 @@ const SignUpPage = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(user),
         })
@@ -104,7 +109,8 @@ const SignUpPage = () => {
             .then((data) => {
                 // console.log(data);
                 if (data.acknowledged) {
-                    setcreatedUserEmail(email);
+                    // verifyJWT(email);
+                    setCreatedUserEmail(email);
                 }
             });
     };

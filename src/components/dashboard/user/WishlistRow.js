@@ -27,6 +27,7 @@ const WishlistRow = ({ productId, idx }) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(order),
         })
@@ -45,36 +46,42 @@ const WishlistRow = ({ productId, idx }) => {
     }
 
     return (
-        <tr className="w-full">
-            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                {idx + 1}
-            </td>
-            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                {product.name}
-            </td>
-            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                {product.price}
-            </td>
-            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
-                {product.category}
-            </td>
-            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
-                {product.isSold ? (
-                    <span className="text-primary font-bold">Sold</span>
-                ) : (
-                    <span className="text-success font-bold">Avaiable</span>
-                )}
-            </td>
-            <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
-                <button
-                    onClick={handleAddToMyOrders}
-                    disabled={product.isSold}
-                    className="text-xs normal-case btn btn-sm btn-primary"
-                >
-                    Add to Orders
-                </button>
-            </td>
-        </tr>
+        <>
+            {product && (
+                <tr className="w-full">
+                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                        {idx + 1}
+                    </td>
+                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                        {product.name}
+                    </td>
+                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                        {product.price}
+                    </td>
+                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
+                        {product.category}
+                    </td>
+                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center capitalize">
+                        {product.isSold ? (
+                            <span className="text-primary font-bold">Sold</span>
+                        ) : (
+                            <span className="text-success font-bold">
+                                Avaiable
+                            </span>
+                        )}
+                    </td>
+                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
+                        <button
+                            onClick={handleAddToMyOrders}
+                            disabled={product.isSold}
+                            className="text-xs normal-case btn btn-sm btn-primary"
+                        >
+                            Add to Orders
+                        </button>
+                    </td>
+                </tr>
+            )}
+        </>
     );
 };
 

@@ -5,11 +5,12 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import login from '../assets/login.svg';
 import Loader from './../components/ui/Loader';
+import verifyJWT from './../components/utils/verifyJWT';
 
 const SignInPage = () => {
     const [error, setError] = useState('');
     const [pageLoading, setPageLoading] = useState(false);
-    const [createdUserEmail, setcreatedUserEmail] = useState('');
+    const [loggedUserEmail, setLoggedUserEmail] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const to = location.state?.from?.pathname || '/';
@@ -25,10 +26,11 @@ const SignInPage = () => {
         setPageLoading(true);
         signIn(data.email, data.password)
             .then((result) => {
+                setPageLoading(false);
                 const user = result.user;
                 setError('');
                 console.log(user);
-                setPageLoading(false);
+                verifyJWT(user.email);
                 navigate(to, { replace: true });
             })
             .catch((err) => {
@@ -46,11 +48,14 @@ const SignInPage = () => {
                 setError('');
                 console.log(user);
                 saveUser(user.displayName, user.email, 'user', false);
+                verifyJWT(user.email);
+                setPageLoading(false);
                 navigate(to, { replace: true });
             })
             .catch((err) => {
                 setError(err.message);
                 console.log(err.message);
+                setPageLoading(false);
             });
     };
 
@@ -62,14 +67,16 @@ const SignInPage = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(user),
         })
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);
+                // verifyJWT(email);
                 if (data.acknowledged) {
-                    setcreatedUserEmail(email);
+                    setLoggedUserEmail(email);
                 }
             });
     };

@@ -43,6 +43,7 @@ const ProductCard = ({ product }) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(wishlishted),
         })

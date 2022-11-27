@@ -3,10 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Loader from '../ui/Loader';
 import ProductCard from './ProductCard';
+import useTitle from './../../hooks/useTitle';
 
 const ProuductByCategory = () => {
     const location = useLocation();
     const category = location.pathname.split('/').at(-1);
+    useTitle(category.charAt(0).toUpperCase() + category.slice(1));
 
     const { data: products, isLoading } = useQuery({
         queryKey: ['products', category],

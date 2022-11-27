@@ -6,8 +6,10 @@ import { AuthContext } from '../contexts/AuthProvider';
 import login from '../assets/login.svg';
 import Loader from './../components/ui/Loader';
 import verifyJWT from './../components/utils/verifyJWT';
+import useTitle from './../hooks/useTitle';
 
 const SignInPage = () => {
+    useTitle('Sign In');
     const [error, setError] = useState('');
     const [pageLoading, setPageLoading] = useState(false);
     const [loggedUserEmail, setLoggedUserEmail] = useState('');

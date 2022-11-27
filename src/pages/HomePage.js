@@ -7,8 +7,10 @@ import Banner from '../components/ui/Banner';
 import Loader from '../components/ui/Loader';
 import NewsLetter from '../components/ui/NewsLetter';
 import { AuthContext } from './../contexts/AuthProvider';
+import useTitle from './../hooks/useTitle';
 
 const HomePage = () => {
+    useTitle('Home');
     const { user } = useContext(AuthContext);
     const { data: categories, isLoading } = useQuery({
         queryKey: ['categories'],

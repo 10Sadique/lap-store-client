@@ -2,8 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Loader from '../ui/Loader';
 import ProductCard from './ProductCard';
+import useTitle from './../../hooks/useTitle';
 
 const Shop = () => {
+    useTitle('Shop');
     const { data: products, isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {

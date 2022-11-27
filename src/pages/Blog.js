@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../hooks/useTitle';
 
 const Blog = () => {
+    useTitle('Blog');
     return (
         <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
             <h1 className="mb-10 lg:text-3xl text-2xl text-center">Blogs</h1>
@@ -88,9 +90,10 @@ const Blog = () => {
                             The main objective of unit testing is to isolate
                             written code to test and determine if it works as
                             intended. Unit testing is an important step in the
-                            development process, because if done correctly, it
-                            can help detect early flaws in code which may be
-                            more difficult to find in later testing stages. For
+                            development process, because import useTitle from
+                            './../hooks/useTitle'; if done correctly, it can
+                            help detect early flaws in code which may be more
+                            difficult to find in later testing stages. For
                             Test-Driven Development (TDD), we write unit tests
                             before writing any implementation. This makes your
                             implementation details in your code shorter and

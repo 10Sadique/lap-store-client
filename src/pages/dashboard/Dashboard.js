@@ -6,12 +6,14 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import AdminPage from './AdminPage';
 import SellerPage from './SellerPage';
 import UserPage from './UserPage';
+import useTitle from './../../hooks/useTitle';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user.email);
     const [isSeller] = useSeller(user.email);
     const [isUser] = useUser(user.email);
+    useTitle('Dashboard');
 
     return (
         <>

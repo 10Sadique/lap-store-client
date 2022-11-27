@@ -6,8 +6,10 @@ import { AuthContext } from '../contexts/AuthProvider';
 import login from '../assets/login.svg';
 import Loader from '../components/ui/Loader';
 import verifyJWT from './../components/utils/verifyJWT';
+import useTitle from './../hooks/useTitle';
 
 const SignUpPage = () => {
+    useTitle('Sign Up');
     const imgHostingKey = process.env.REACT_APP_imgbb_apiKey;
     const [error, setError] = useState('');
     const [pageLoading, setPageLoading] = useState(false);

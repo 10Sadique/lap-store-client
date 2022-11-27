@@ -28,7 +28,7 @@ const AdvertisedContainer = () => {
 
     return (
         <div className="mb-10">
-            {products.length && <AdvertisedProducts products={products} />}
+            {products.length > 0 && <AdvertisedProducts products={products} />}
         </div>
     );
 };

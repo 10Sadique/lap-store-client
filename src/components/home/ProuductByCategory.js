@@ -29,10 +29,10 @@ const ProuductByCategory = () => {
 
     return (
         <div className="mx-auto max-w-[360px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
-            <h1 className="mb-10 text-xl lg:text-2xl capitalize">
+            <h1 className="mb-10 text-xl capitalize lg:text-2xl">
                 Showing Laptops from {category} Category
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {products.map((product) => (
                     <ProductCard key={product._id} product={product} />
                 ))}

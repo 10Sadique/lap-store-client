@@ -28,7 +28,7 @@ const ProuductByCategory = () => {
     console.log(products);
 
     return (
-        <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
+        <div className="mx-auto max-w-[360px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
             <h1 className="mb-10 text-xl lg:text-2xl capitalize">
                 Showing Laptops from {category} Category
             </h1>

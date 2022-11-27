@@ -28,7 +28,7 @@ const Payment = () => {
 
     return (
         <div className="flex items-center justify-center h-full">
-            <div className="p-5 m-10 shadow-md w-[370px] rounded-xl bg-accent/10">
+            <div className="p-5 m-10 shadow-md w-[360px] rounded-xl bg-accent/10">
                 <Elements stripe={stripePromise}>
                     <CheckoutForm product={product} />
                 </Elements>

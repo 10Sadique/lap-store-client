@@ -4,7 +4,7 @@ import useTitle from '../hooks/useTitle';
 const Blog = () => {
     useTitle('Blog');
     return (
-        <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
+        <div className="mx-auto max-w-[360px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
             <h1 className="mb-10 lg:text-3xl text-2xl text-center">Blogs</h1>
             <div className="space-y-10">
                 {/* ques 1 */}

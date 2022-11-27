@@ -93,7 +93,7 @@ const SignInPage = () => {
     }
 
     return (
-        <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
+        <div className="mx-auto max-w-[360px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
                 <div className="flex items-center justify-center">
                     <img src={login} alt="" />

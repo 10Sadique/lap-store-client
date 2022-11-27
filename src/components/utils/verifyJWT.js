@@ -8,6 +8,7 @@ const verifyJWT = async (email) => {
         }
     );
     const data = await res.json();
+    console.log(data);
     localStorage.setItem('accessToken', data.accessToken);
 };
 

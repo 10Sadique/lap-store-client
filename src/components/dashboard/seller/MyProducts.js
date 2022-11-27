@@ -35,6 +35,7 @@ const MyProducts = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.modifiedCount > 0) {
+                    toast.success('Added to Advertised!!');
                     refetch();
                 }
             });
@@ -99,11 +100,11 @@ const MyProducts = () => {
                                     </td>
                                     <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
                                         {product.isSold ? (
-                                            <span className="text-primary font-semibold">
+                                            <span className="font-semibold text-primary">
                                                 Sold
                                             </span>
                                         ) : (
-                                            <span className="text-success font-semibold">
+                                            <span className="font-semibold text-success">
                                                 Available
                                             </span>
                                         )}

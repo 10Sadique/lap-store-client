@@ -70,14 +70,14 @@ const SignInPage = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                // authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(user),
         })
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);
-                // verifyJWT(email);
+                verifyJWT(email);
                 if (data.acknowledged) {
                     setLoggedUserEmail(email);
                 }

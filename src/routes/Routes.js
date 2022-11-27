@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
             },
             // user routes
             {
-                path: '/dashboard',
+                path: '/dashboard/wishlist',
                 element: (
                     <UserRoute>
                         <MyWishlist />
@@ -103,7 +103,7 @@ export const router = createBrowserRouter([
                 ),
             },
             {
-                path: '/dashboard/orders',
+                path: '/dashboard',
                 element: (
                     <UserRoute>
                         <MyOrders />

@@ -58,6 +58,7 @@ const SignUpPage = () => {
                                         data.role,
                                         false
                                     );
+                                    verifyJWT(user.email);
                                     setPageLoading(false);
                                 })
                                 .catch((err) => {
@@ -103,7 +104,7 @@ const SignUpPage = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                // authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             body: JSON.stringify(user),
         })
@@ -111,7 +112,7 @@ const SignUpPage = () => {
             .then((data) => {
                 // console.log(data);
                 if (data.acknowledged) {
-                    // verifyJWT(email);
+                    verifyJWT(email);
                     setCreatedUserEmail(email);
                 }
             });

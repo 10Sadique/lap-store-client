@@ -1,9 +1,9 @@
-import MyWishlist from '../../components/dashboard/user/MyWishlist';
+import MyOrders from './../../components/dashboard/user/MyOrders';
 
 const UserPage = () => {
     return (
         <div>
-            <MyWishlist />
+            <MyOrders />
         </div>
     );
 };

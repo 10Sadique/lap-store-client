@@ -84,11 +84,11 @@ const DashboardLayout = () => {
                         {isUser && (
                             <>
                                 <li>
-                                    <Link to={`/dashboard`}>My Wishlist</Link>
+                                    <Link to={`/dashboard`}>My Orders</Link>
                                 </li>
                                 <li>
-                                    <Link to={`/dashboard/orders`}>
-                                        My Orders
+                                    <Link to={`/dashboard/wishlist`}>
+                                        My Wishlist
                                     </Link>
                                 </li>
                             </>

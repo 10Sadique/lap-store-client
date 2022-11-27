@@ -12,8 +12,9 @@ const SignInPage = () => {
     const [pageLoading, setPageLoading] = useState(false);
     const [loggedUserEmail, setLoggedUserEmail] = useState('');
     const navigate = useNavigate();
-    const location = useLocation();
-    const to = location.state?.from?.pathname || '/';
+    // const location = useLocation();
+    // const to = location.state?.from?.pathname || '/';
+    const to = '/';
     const {
         register,
         handleSubmit,
@@ -63,7 +64,7 @@ const SignInPage = () => {
     const saveUser = (name, email, role = 'user', isVerified = false) => {
         const user = { name, email, role, isVerified };
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://lap-store-server.vercel.app/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

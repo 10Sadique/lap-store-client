@@ -16,7 +16,7 @@ const CheckoutForm = ({ product }) => {
     const elements = useElements();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://lap-store-server.vercel.app/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const CheckoutForm = ({ product }) => {
                 sellerEmail,
             };
 
-            fetch(`http://localhost:5000/payment`, {
+            fetch(`https://lap-store-server.vercel.app/payment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

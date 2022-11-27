@@ -19,6 +19,8 @@ import AllSellers from '../components/dashboard/admin/AllSellers';
 import AdminRoute from './AdminRoute';
 import SellerRoute from './SellerRoute';
 import UserRoute from './UserRoute';
+import NotFound from './../components/ui/NotFound';
+import Blog from '../pages/Blog';
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +45,10 @@ export const router = createBrowserRouter([
                         <Shop />
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: '/blog',
+                element: <Blog />,
             },
         ],
     },
@@ -131,5 +137,9 @@ export const router = createBrowserRouter([
                 ),
             },
         ],
+    },
+    {
+        path: '/*',
+        element: <NotFound />,
     },
 ]);

@@ -20,7 +20,7 @@ const ProductModal = ({ product, user, closeModal }) => {
             // meetLocation: data.meetLocation,
         };
 
-        fetch(`http://localhost:5000/orders/add`, {
+        fetch(`https://lap-store-server.vercel.app/orders/add`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

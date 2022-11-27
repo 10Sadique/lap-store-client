@@ -15,7 +15,7 @@ const Payment = () => {
         queryKey: ['product', productId],
         queryFn: async () => {
             const res = await axios.get(
-                `http://localhost:5000/payment/products/${productId}`
+                `https://lap-store-server.vercel.app/payment/products/${productId}`
             );
 
             return res.data;

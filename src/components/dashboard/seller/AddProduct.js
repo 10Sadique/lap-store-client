@@ -21,7 +21,9 @@ const AddProduct = () => {
     const { data: categories, isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await axios('http://localhost:5000/categories');
+            const res = await axios(
+                'https://lap-store-server.vercel.app/categories'
+            );
 
             return res.data;
         },
@@ -59,7 +61,7 @@ const AddProduct = () => {
                         sellerName: user.displayName,
                     };
 
-                    fetch('http://localhost:5000/products/add', {
+                    fetch('https://lap-store-server.vercel.app/products/add', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

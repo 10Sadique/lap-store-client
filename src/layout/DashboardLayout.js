@@ -18,7 +18,7 @@ const DashboardLayout = () => {
     // const { data: users, isLoading } = useQuery({
     //     queryKey: ['users'],
     //     queryFn: async () => {
-    //         const res = await axios('http://localhost:5000/users');
+    //         const res = await axios('https://lap-store-server.vercel.app/users');
 
     //         return res.data;
     //     },
@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                         htmlFor="dashboard-drawer"
                         className="drawer-overlay"
                     ></label>
-                    <ul className="p-4 text-white menu w-52 bg-neutral">
+                    <ul className="p-4 text-white menu w-80 lg:w-52 bg-neutral">
                         {isAdmin && (
                             <>
                                 <li>
@@ -74,11 +74,11 @@ const DashboardLayout = () => {
                                         Add Products
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link to={`/dashboard/my-buyers`}>
                                         My Buyers
                                     </Link>
-                                </li>
+                                </li> */}
                             </>
                         )}
                         {isUser && (

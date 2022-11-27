@@ -7,7 +7,7 @@ import WishlistRow from './WishlistRow';
 
 const MyWishlist = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/wishlist?email=${user.email}`;
+    const url = `https://lap-store-server.vercel.app/wishlist?email=${user.email}`;
     const { data: wishlist, isLoading } = useQuery({
         queryKey: ['wishlist', user.email],
         queryFn: async () => {
@@ -29,7 +29,7 @@ const MyWishlist = () => {
                 <div className="overflow-hidden shadow-md rounded-xl">
                     <table className="w-full table-fixed lg:table-auto">
                         <thead className="bg-secondary/20">
-                            <tr className="overflow-x-scroll">
+                            <tr className="overflow-x-scroll divide-x-[1px]">
                                 <th className="py-2 lg:px-5">Sl.</th>
                                 <th className="py-2 lg:px-5">Name</th>
                                 <th className="py-2 lg:px-5">Price</th>

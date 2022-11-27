@@ -12,7 +12,7 @@ const MyOrders = () => {
         queryKey: ['products', email],
         queryFn: async () => {
             const res = await axios(
-                `http://localhost:5000/orders?email=${email}`
+                `https://lap-store-server.vercel.app/orders?email=${email}`
             );
 
             return res.data;
@@ -32,7 +32,7 @@ const MyOrders = () => {
                 <div className="overflow-hidden shadow-md rounded-xl">
                     <table className="w-full table-fixed lg:table-auto">
                         <thead className="bg-secondary/20">
-                            <tr className="overflow-x-scroll">
+                            <tr className="overflow-x-scroll divide-x-[1px]">
                                 <th className="py-2 lg:px-5">Sl.</th>
                                 <th className="py-2 lg:px-5">Name</th>
                                 <th className="py-2 lg:px-5">Price</th>

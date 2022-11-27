@@ -12,7 +12,7 @@ const ProuductByCategory = () => {
         queryKey: ['products', category],
         queryFn: async () => {
             const res = await axios(
-                `http://localhost:5000/products/${category}`
+                `https://lap-store-server.vercel.app/products/${category}`
             );
 
             return res.data;
@@ -27,7 +27,7 @@ const ProuductByCategory = () => {
 
     return (
         <div className="mx-auto max-w-[370px] md:max-w-3xl lg:max-w-6xl my-10 lg:my-14">
-            <h1 className="mb-5 text-2xl capitalize">
+            <h1 className="mb-10 text-xl lg:text-2xl capitalize">
                 Showing Laptops from {category} Category
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

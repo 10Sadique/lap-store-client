@@ -18,7 +18,7 @@ const MyProducts = () => {
         queryKey: ['products', email],
         queryFn: async () => {
             const res = await axios(
-                `http://localhost:5000/products?email=${email}`
+                `https://lap-store-server.vercel.app/products?email=${email}`
             );
 
             return res.data;
@@ -26,7 +26,7 @@ const MyProducts = () => {
     });
 
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/advertise/${email}/${id}`, {
+        fetch(`https://lap-store-server.vercel.app/advertise/${email}/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ const MyProducts = () => {
     };
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://lap-store-server.vercel.app/products/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -74,7 +74,7 @@ const MyProducts = () => {
                 <div className="overflow-hidden shadow-md rounded-xl">
                     <table className="w-full table-fixed lg:table-auto">
                         <thead className="bg-secondary/20">
-                            <tr className="overflow-x-scroll">
+                            <tr className="overflow-x-scroll divide-x-[1px]">
                                 <th className="py-2 lg:px-5">Sl.</th>
                                 <th className="py-2 lg:px-5">Name</th>
                                 <th className="py-2 lg:px-5">Price</th>
@@ -84,11 +84,14 @@ const MyProducts = () => {
                         </thead>
                         <tbody className="divide-y-[1px] bg-secondary/10">
                             {products.map((product, i) => (
-                                <tr key={product._id}>
+                                <tr
+                                    className="divide-x-[1px]"
+                                    key={product._id}
+                                >
                                     <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
                                         {i + 1}
                                     </td>
-                                    <td className="py-2 lg:py-3 text-sm lg:text-[16px] ">
+                                    <td className="py-2 lg:py-3 text-sm text-center lg:text-[16px] ">
                                         {product.name}
                                     </td>
                                     <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
@@ -96,11 +99,11 @@ const MyProducts = () => {
                                     </td>
                                     <td className="py-2 lg:py-3 text-sm lg:text-[16px] text-center">
                                         {product.isSold ? (
-                                            <span className="text-primary">
+                                            <span className="text-primary font-semibold">
                                                 Sold
                                             </span>
                                         ) : (
-                                            <span className="text-success">
+                                            <span className="text-success font-semibold">
                                                 Available
                                             </span>
                                         )}
@@ -111,7 +114,7 @@ const MyProducts = () => {
                                                 handleAdvertise(product._id)
                                             }
                                             disabled={product.isAdvertised}
-                                            className="w-full btn btn-success btn-xs lg:w-auto"
+                                            className="w-full btn btn-success lg:btn-sm lg:w-auto"
                                         >
                                             Advertise
                                         </button>
@@ -120,7 +123,7 @@ const MyProducts = () => {
                                                 setDeletingProduct(product)
                                             }
                                             htmlFor="confirmation-modal"
-                                            className="w-full btn btn-primary btn-xs lg:w-auto"
+                                            className="w-full btn btn-primary lg:btn-sm lg:w-auto"
                                         >
                                             Delete
                                         </label>

@@ -97,7 +97,7 @@ const SignUpPage = () => {
     const saveUser = (name, email, role = 'user', isVerified = false) => {
         const user = { name, email, role, isVerified };
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://lap-store-server.vercel.app/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

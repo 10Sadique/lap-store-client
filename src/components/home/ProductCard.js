@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
         queryKey: ['sellerId', product.sellerEmail],
         queryFn: async () => {
             const res = await axios(
-                `http://localhost:5000/seller/${product.sellerEmail}`
+                `https://lap-store-server.vercel.app/seller/${product.sellerEmail}`
             );
 
             return res.data;
@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
             productId: product._id,
             userEmail: email,
         };
-        fetch('http://localhost:5000/wishlist/add', {
+        fetch('https://lap-store-server.vercel.app/wishlist/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const ProductCard = ({ product }) => {
     }
 
     return (
-        <div className="col-span-1 p-5 rounded-lg shadow-md bg-accent/10">
+        <div className="col-span-1 p-4 rounded-2xl shadow-md bg-accent/10">
             <div className="w-full h-[185px] rounded-lg overflow-hidden mb-3 shadow-md">
                 <img
                     className="object-cover w-full h-full"
@@ -91,7 +91,7 @@ const ProductCard = ({ product }) => {
                 </div>
 
                 {/* price */}
-                <div className="grid grid-cols-5 gap-4 mb-3">
+                <div className="grid grid-cols-5 gap-4 mb-2">
                     <p className="col-span-2">
                         Price:{' '}
                         <span className="text-xl font-bold text-primary">
@@ -106,6 +106,12 @@ const ProductCard = ({ product }) => {
                     </p>
                 </div>
 
+                <p className="mb-2 ">
+                    Category:{' '}
+                    <span className="font-semibold ">
+                        <span className="capitalize">{product.category}</span>
+                    </span>
+                </p>
                 {/* conditions */}
                 <div className="grid grid-cols-2 gap-4 mb-3">
                     <p>
